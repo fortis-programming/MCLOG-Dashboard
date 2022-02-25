@@ -1,0 +1,47 @@
+.card {
+    &__list {
+        margin: 5px 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        
+        .info-container {
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+
+            img, h4 {
+                margin: auto 0;
+                opacity: 0.8;
+                font-weight: 500;
+            }
+
+            img {
+                background-color: $product-color;
+                border-radius: 50%;
+                height: 34px;
+                width: 37px;
+            }
+        }
+
+        h4 {
+            font-weight: 500;
+        }
+    }
+
+
+    &__bordered {
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        height: 55%;
+        display: flex;
+        margin: 10px -5px;
+    }
+
+    &__bordered > * {
+        margin-top: 30px;
+        display: flex;
+        overflow: hidden;
+        width: 1000px;
+    }
+}

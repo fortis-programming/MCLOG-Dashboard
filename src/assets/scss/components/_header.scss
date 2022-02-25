@@ -1,0 +1,23 @@
+.header {
+    padding: 15px 24px;
+
+    .banner {
+        display: flex;
+        flex-direction: row;
+
+        img {
+            height: 50px;
+            border-right: 1px solid whitesmoke;
+            padding-right: 15px;
+        }
+
+        p {
+            margin: auto 10px;
+            font-weight: 600;
+        }
+    }
+
+    .banner > * {
+        margin: auto 0;
+    }
+}

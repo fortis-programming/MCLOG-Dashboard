@@ -1,0 +1,92 @@
+.dashboard {
+    padding: 10px 20px;
+    display: grid;
+    grid-template-columns: 69% 30%;
+    gap: 15px;    
+    height: 100%;
+
+    .container {
+
+        &__right-container {
+            border: 1px solid $border-color;
+            border-radius: 4px;
+            padding: 12px;
+            height: fit-content;
+        }
+
+        .activity-container {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            align-items: center;
+            justify-content: space-evenly;
+            gap: 10px;
+
+            .activity {
+                border-radius: 4px;
+                padding: 12px;
+                display: flex;
+                flex-direction: row;
+                gap: 15px;
+                border: 1px solid $border-color;
+                
+                &__left {
+                    .icon-container {
+                        background-color: $icon-bg;
+                        display: flex;
+                        align-items: center;
+                        width: 55px;
+                        border-radius: 4px;
+                        svg {
+                            color: $Icon-color;
+                            margin: auto;
+                            height: 20px;
+                        }
+                    }
+                }
+
+                &__right {
+                    .icon-container {
+                        background-color: $icon-bg-red;
+                        display: flex;
+                        align-items: center;
+                        width: 55px;
+                        border-radius: 4px;
+                        svg {
+                            color: $Icon-color-red;
+                            margin: auto;
+                            height: 20px;
+                        }
+                    }
+                }
+    
+                .information {
+                    p {
+                        font-size: 0.8rem;
+                        font-weight: 600;
+                        color: $product-color;
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .activity-container {
+                display: flex;
+                flex-direction: column;
+
+                .activity {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .dashboard {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+}
