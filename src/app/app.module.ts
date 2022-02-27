@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -26,9 +27,10 @@ const analytics =   getAnalytics(app);
     EstablishmentItemComponent
   ],
   imports: [
-    BrowserModule,
-    RouterModule,
     AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    RouterModule,
     NgxChartsModule,
     HttpClientModule
   ],

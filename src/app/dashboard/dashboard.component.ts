@@ -78,7 +78,8 @@ export class DashboardComponent implements OnInit {
 
   getActivities(): void {
     this.activityLogsService.getActivityLogs().subscribe(dataResponse => {
-      this.activityLogs = dataResponse;
+      console.log(dataResponse)
+      //this.activityLogs = dataResponse;
     });
   }
 

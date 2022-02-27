@@ -14,15 +14,18 @@ export class EstablishmentItemComponent implements OnInit {
   constructor(private activityLogsService: ActivityService) {}
 
   ngOnInit(): void {
+    this.getBuildingRecordCount();
   }
  
   recordCount = 0;
-  getBuildingRecordCount(): number {
+  getBuildingRecordCount(): void {
     this.activityLogsService.getActivityLogs().subscribe((dataResponse) => {
       this.recordCount = dataResponse.filter((data) => data.buildingName.toLowerCase() === this.establishment.toLowerCase())
         .length;
     });
+  }
 
+  getCount(): number {
     return this.recordCount;
   }
 }

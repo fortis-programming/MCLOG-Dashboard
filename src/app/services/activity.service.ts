@@ -17,6 +17,4 @@ export class ActivityService {
   getActivityLogs(): Observable<ActivityLogsModel[]> {
     return this.http.get<ActivityLogsModel[]>(this.apiURL);
   }
-
-  
 }
