@@ -10,7 +10,7 @@
                 </div>
                 <div class="information">
                     <p>Total Visitors</p>
-                    <h2>{{ activityLogs.length }}</h2>
+                    <h2>{{ activities.length }}</h2>
                 </div>
             </div>
             <div class="activity activity__right">
@@ -22,16 +22,21 @@
                     </svg>
                 </div>
                 <div class="information">
-                    <p>Total COVID-19 Case</p>
-                    <h2>20</h2>
+                    <p>Confirmed PUI</p>
+                    <h2>{{ activityLogs.length }}</h2>
                 </div>
             </div>
         </div>
-        <div class="activity-container card__bordered">
-            <ngx-charts-line-chart *ngIf="data.length != 0" [results]="data" [xAxisLabel]="''"
+        <div class="card__bordered">
+            <app-dashboard-table></app-dashboard-table>
+            <!-- <div class="loader-container" *ngIf="data.length == 0">
+                <div class="loader">
+                </div>
+            </div> -->
+            <!-- <ngx-charts-line-chart *ngIf="data.length != 0" [results]="data" [xAxisLabel]="''"
                 [yAxisLabel]="''" [legend]="true" [showXAxisLabel]="true"
                 [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true" [gradient]="false">
-            </ngx-charts-line-chart>
+            </ngx-charts-line-chart> -->
         </div>
     </div>
     <div class="container container__right-container">

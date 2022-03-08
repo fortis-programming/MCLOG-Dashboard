@@ -18,11 +18,12 @@ export class EstablishmentItemComponent implements OnInit {
  
   recordCount = 0;
   getBuildingRecordCount(): number {
-    this.activityLogsService.getActivityLogs().subscribe((dataResponse) => {
-      this.recordCount = dataResponse.filter((data) => data.buildingName.toLowerCase() === this.establishment.toLowerCase())
-        .length;
-    });
+    // this.activityLogsService.getActivityLogs().subscribe((dataResponse) => {
+    //   this.recordCount = dataResponse.filter((data) => data.buildingName.toLowerCase() === this.establishment.toLowerCase())
+    //     .length;
+    // });
 
-    return this.recordCount;
+    // return this.recordCount;
+    return 0;
   }
 }

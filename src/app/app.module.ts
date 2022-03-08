@@ -14,6 +14,8 @@ import { EstablishmentItemComponent } from './establishments/establishment-item/
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { firebaseConfig } from 'src/environments/environment';
+import { DashboardTableComponent } from './dashboard-table/dashboard-table.component';
+import { DashboardTableItemComponent } from './dashboard-table/dashboard-table-item/dashboard-table-item.component';
 
 const app = initializeApp(firebaseConfig);
 const analytics =   getAnalytics(app);
@@ -23,7 +25,9 @@ const analytics =   getAnalytics(app);
     AppComponent,
     DashboardComponent,
     EstablishmentsComponent,
-    EstablishmentItemComponent
+    EstablishmentItemComponent,
+    DashboardTableComponent,
+    DashboardTableItemComponent
   ],
   imports: [
     BrowserModule,

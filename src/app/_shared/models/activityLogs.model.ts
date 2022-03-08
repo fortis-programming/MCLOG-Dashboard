@@ -1,8 +1,8 @@
 export interface ActivityLogsModel {
-    id: string;
-    timeIn: Date;
-    timeOut: Date;
     buildingName: string;
+    address: string;
     status: string;
-    userId: string;
+    gender: string;
+    symptomName: string;
+    activityDate: Date   
 }
