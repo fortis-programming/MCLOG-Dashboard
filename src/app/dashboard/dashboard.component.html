@@ -1,45 +1,69 @@
+<div class="empty-state" *ngIf="activityLogs.length === 0 && !loading">
+  <img src="../../assets/images/undraw_no_data_re_kwbl.svg" height="80px">
+  <p>No data found</p>
+</div>
+
+<div class="empty-state" *ngIf="loading">
+  <div class="loader"></div>
+</div>
+
 <div class="dashboard">
-    <div class="container">
-        <div class="activity-container">
-            <div class="activity activity__left">
-                <div class="icon-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path
-                            d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
-                    </svg>
-                </div>
-                <div class="information">
-                    <p>Total Visitors</p>
-                    <h2>{{ activities.length }}</h2>
-                </div>
-            </div>
-            <div class="activity activity__right">
-                <div class="icon-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </div>
-                <div class="information">
-                    <p>Confirmed PUI</p>
-                    <h2>{{ activityLogs.length }}</h2>
-                </div>
-            </div>
-        </div>
-        <div class="card__bordered">
-            <app-dashboard-table></app-dashboard-table>
-            <!-- <div class="loader-container" *ngIf="data.length == 0">
-                <div class="loader">
-                </div>
-            </div> -->
-            <!-- <ngx-charts-line-chart *ngIf="data.length != 0" [results]="data" [xAxisLabel]="''"
-                [yAxisLabel]="''" [legend]="true" [showXAxisLabel]="true"
-                [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true" [gradient]="false">
-            </ngx-charts-line-chart> -->
-        </div>
+  <select class="form-select form-select-lg" aria-label=".form-select-lg example" (change)="onChange($event.target)">
+    <option value="1" *ngFor="let option of establishments" value="{{ option }}" selected>{{ option }}</option>
+  </select>
+  <div class="activity-container" *ngIf="activityLogs.length !== 0 && !loading">
+    <div class="activity p-2">
+      <div class="icon-container icon-container__log">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path
+            d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+        </svg>
+      </div>
+      <div class="information">
+        <p>Total Visitors</p>
+        <h2>{{ activities.length }}</h2>
+      </div>
     </div>
-    <div class="container container__right-container">
-        <app-establishments></app-establishments>
+    <div class="activity p-2">
+      <div class="icon-container icon-container__pui">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd"
+            d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z"
+            clip-rule="evenodd" />
+        </svg>
+      </div>
+      <div class="information">
+        <p>Confirmed PUI</p>
+        <h2>{{ activityLogs.length }}</h2>
+      </div>
     </div>
+  </div>
+
+  <div class="card__bordered" *ngIf="activityLogs.length !== 0 && !loading">
+    <div class="table1 d-flex flex-column">
+      <div class="table-head" (click)="expandTodayList()">
+        <div class="table-header">
+          <p>This month</p>
+          <svg [ngClass]="expandTodaysList? 'expand' : 'minimize'" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+            viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd" />
+          </svg>
+        </div>
+      </div>
+      <div class="today" *ngIf="expandTodaysList">
+        <div class="table-item-header">
+          <div>Building</div>
+          <div class="location">Location</div>
+          <div class="center">Gender</div>
+          <div class="">Symptom</div>
+          <div class="date">Date</div>
+        </div>
+        <app-dashboard-table-item *ngFor="let activityLog of activityLogs" [activityLog]="activityLog">
+        </app-dashboard-table-item>
+      </div>
+    </div>
+  </div>
+
 </div>
