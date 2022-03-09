@@ -6,85 +6,60 @@ import { ActivityLogsModel } from '../_shared/models/activityLogs.model';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
   data: { value: number; name: string }[] = [];
-  
-  constructor(
-    private activityLogsService: ActivityService
-  ) {}
+  establishments = ['Penshoppe', 'Bench', 'Mcdo'];
+  constructor(private activityLogsService: ActivityService) {}
 
   activityLogs: ActivityLogsModel[] = [];
 
   ngOnInit(): void {
     this.getActivities();
-    this.getTotalPUI()
+    this.getTotalPUI();
+    setTimeout(() => {
+      this.loading = false;
+    }, 2000);
   }
 
-  // storeData(): void {
-  //   this.data = (JSON.parse(JSON.stringify([{
-  //     "name": "PUI",
-  //     "series": [
-  //       {
-  //         "value": 5130,
-  //         "name": "2021-10"
-  //       },
-  //       {
-  //         "value": 4610,
-  //         "name": "2021-11"
-  //       },
-  //       {
-  //         "value": 4373,
-  //         "name": "2021-12"
-  //       },
-  //       {
-  //         "value": 3364,
-  //         "name": "2022-01"
-  //       },
-  //       {
-  //         "value": 2075,
-  //         "name": "2022-02"
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     "name": "Activity",
-  //     "series": [
-  //       {
-  //         "value": 6927,
-  //         "name": "2021-10"
-  //       },
-  //       {
-  //         "value": 4320,
-  //         "name": "2021-11"
-  //       },
-  //       {
-  //         "value": 2532,
-  //         "name": "2021-12"
-  //       },
-  //       {
-  //         "value": 2910,
-  //         "name": "2022-01"
-  //       },
-  //       {
-  //         "value": 22,
-  //         "name": "2022-02"
-  //       }
-  //     ]
-  //   }])));
-  // }
+  expandTodaysList = true;
+  expandTodayList(): void {
+    this.expandTodaysList
+      ? (this.expandTodaysList = false)
+      : (this.expandTodaysList = true);
+  }
+
+  filter = 'MCDO';
+  loading = true;
+  onChange(deviceValue: any) {
+    this.filter = deviceValue.value;
+    this.ngOnInit();
+  }
+
+  expandAllList = false;
+  expandAllData(): void {
+    this.expandAllList
+      ? (this.expandAllList = false)
+      : (this.expandAllList = true);
+  }
 
   getActivities(): void {
-    this.activityLogsService.getActivityLogs().subscribe(dataResponse => {
-      this.activityLogs = dataResponse;
+    this.activityLogsService.getActivityLogs().subscribe((dataResponse) => {
+      this.activityLogs = dataResponse.filter(
+        (data) =>
+          data.buildingName.toLowerCase() === this.filter.toLowerCase() &&
+          data.symptomName !== ''
+      );
     });
   }
 
-  activities: ActivitiesModel[] = [];
+  activities: ActivityLogsModel[] = [];
   getTotalPUI(): void {
-    this.activityLogsService.getActivities().subscribe(response => {
-      this.activities = response;
+    this.activityLogsService.getActivityLogs().subscribe((response) => {
+      this.activities = response.filter(
+        (data) => data.buildingName.toLowerCase() === this.filter.toLowerCase()
+      );
     });
   }
 }

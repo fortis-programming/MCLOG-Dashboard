@@ -1,33 +1,61 @@
-.table {
+.table1 {
   width: 100%;
+  overflow: auto;
 }
 
 .table-head {
-    padding: 8px 15px;
+  padding: 8px 15px;
 
-    .table-header {
-        color: #31343C;
-        font-weight: 600;
-        display: flex;
-        flex-direction: row;
-        cursor: pointer;
-    
-        svg {
-          height: 20px;
-          margin: auto 5px;
-        }
-    
-        .expand {
-          transform: rotate(180deg);
-        }
-      }
+  .table-header {
+    color: #31343C;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+
+    &:hover {
+      background-color: none;
+    }
+
+    p {
+      margin: auto 0;
+    }
+
+    svg {
+      height: 20px;
+      margin: auto 5px;
+    }
+
+    .expand {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.table-item-header {
+  display: grid;
+  flex-direction: row;
+  grid-template-columns: 15% 30% 15% 20% 20%;
+  padding: 8px 20px;
+  border-bottom: 1px solid $border-color;
+  font-size: 0.755rem;
+  font-weight: 600;
+  color: $product-color;
+
+  .date {
+    text-align: right;
+  }
+
+  .center {
+    text-align: center;
+  }
 }
 
 .table-item {
   display: grid;
   flex-direction: row;
   grid-template-columns: 15% 30% 15% 20% 20%;
-  padding: 8px 15px;
+  padding: 8px 20px;
   border-bottom: 1px solid $border-color;
   font-size: 0.855rem;
 
@@ -38,11 +66,11 @@
   .date {
     text-align: right;
   }
-  
+
   .center {
     text-align: center;
   }
-  
+
   .location {
     display: flex;
     flex-direction: row;

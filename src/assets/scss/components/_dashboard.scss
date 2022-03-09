@@ -1,96 +1,130 @@
 .dashboard {
-    padding: 10px 20px;
-    display: grid;
-    grid-template-columns: 69% 30%;
-    gap: 15px;    
-    height: 100%;
+  padding: 0px 15px;
 
-    .container {
+  select {
+      position: absolute;
+      top: 3%;
+      right: 0%;
+      margin-right: 15px;
+      width: 200px;
+      font-size: 0.9rem;
+      border: 1px solid $border-color;
+  }
 
-        &__right-container {
-            border: 1px solid $border-color;
-            border-radius: 4px;
-            padding: 12px;
-            height: fit-content;
+  .activity-container {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+
+    .activity {
+      border: 1px solid $border-color;
+      display: flex;
+      flex-direction: row;
+      height: 80px;
+      width: 100%;
+      gap: 15px;
+
+      .icon-container {
+        display: flex;
+        align-items: center;
+        width: 60px;
+        border-radius: 4px;
+
+        &__pui {
+          background-color: $icon-bg-red;
+
+          svg {
+            color: $Icon-color-red;
+            color: red;
+          }
         }
 
-        .activity-container {
-            display: grid;
-            grid-template-columns: 50% 50%;
-            align-items: center;
-            justify-content: space-evenly;
-            gap: 10px;
+        &__log {
+          background-color: $icon-bg;
 
-            .activity {
-                border-radius: 4px;
-                padding: 12px;
-                display: flex;
-                flex-direction: row;
-                gap: 15px;
-                border: 1px solid $border-color;
-                
-                &__left {
-                    .icon-container {
-                        background-color: $icon-bg;
-                        display: flex;
-                        align-items: center;
-                        width: 55px;
-                        border-radius: 4px;
-                        svg {
-                            color: $Icon-color;
-                            margin: auto;
-                            height: 20px;
-                        }
-                    }
-                }
-
-                &__right {
-                    .icon-container {
-                        background-color: $icon-bg-red;
-                        display: flex;
-                        align-items: center;
-                        width: 55px;
-                        border-radius: 4px;
-                        svg {
-                            color: $Icon-color-red;
-                            margin: auto;
-                            height: 20px;
-                        }
-                    }
-                }
-    
-                .information {
-                    p {
-                        font-size: 0.8rem;
-                        font-weight: 600;
-                        color: $product-color;
-                        opacity: 0.8;
-                    }
-
-                    h4 {
-                        color: #31343C;
-                    }
-                }
-            }
+          svg {
+            color: $Icon-color;
+          }
         }
 
-        @media screen and (max-width: 500px) {
-            .activity-container {
-                display: flex;
-                flex-direction: column;
-
-                .activity {
-                    width: 100%;
-                }
-            }
+        svg {
+          margin: auto;
+          height: 20px;
         }
+      }
+
+      .information {
+        p {
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: $product-color;
+          opacity: 0.8;
+        }
+
+        h2 {
+          margin-top: -15px;
+        }
+      }
+
     }
+  }
+
+
+  @media screen and (max-width: 700px) {
+      .activity-container {
+          display: block;
+          .activity {
+              margin-bottom: 9px;
+          }
+      }
+  }
+
 }
 
-@media screen and (max-width: 700px) {
-    .dashboard {
-        display: flex;
-        flex-direction: column;
-        gap: 0px;
-    }
+.loader {
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid #3498db;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.empty-state {
+  display: flex;
+  margin: auto;
+  padding: 12px;
+  width: 200px;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid $border-color;
+  border-radius: 50%;
+
+  p {
+    text-align: center;
+    font-weight: 600;
+    font-size: small;
+  }
+
+  img {
+    margin: auto;
+  }
 }
