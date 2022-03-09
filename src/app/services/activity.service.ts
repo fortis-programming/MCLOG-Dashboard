@@ -13,7 +13,7 @@ export class ActivityService {
   constructor(private http: HttpClient) { }
 
   //  CHANGE THIS URL WITH YOUR DEPLOYMENT URL
-  apiURL = 'https://localhost:7168/api/';
+  apiURL = 'https://mclogapi20220308122258.azurewebsites.net/api/';
   //https://mclogapi20220219222916.azurewebsites.net/api/ActivityLogs
   
 
@@ -24,5 +24,4 @@ export class ActivityService {
   getActivities(): Observable<ActivitiesModel[]> {
     return this.http.get<ActivitiesModel[]>(this.apiURL + 'ActivityLogs');
   }
-  
 }

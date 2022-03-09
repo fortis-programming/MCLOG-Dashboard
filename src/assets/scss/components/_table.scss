@@ -26,7 +26,7 @@
 .table-item {
   display: grid;
   flex-direction: row;
-  grid-template-columns: 15% 20% 5% 10% 10% 40%;
+  grid-template-columns: 15% 30% 15% 20% 20%;
   padding: 8px 15px;
   border-bottom: 1px solid $border-color;
   font-size: 0.855rem;
@@ -38,4 +38,29 @@
   .date {
     text-align: right;
   }
+  
+  .center {
+    text-align: center;
+  }
+  
+  .location {
+    display: flex;
+    flex-direction: row;
+
+    svg {
+      height: 20px;
+      margin: auto 0;
+      margin-right: 5px;
+      color: red;
+    }
+
+    span {
+      margin: auto 0;
+    }
+  }
+}
+
+.table-th {
+  font-size: 0.788rem;
+  opacity: 0.8;
 }

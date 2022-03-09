@@ -10,6 +10,13 @@
     </div>
   </div>
   <div class="today" *ngIf="expandTodaysList">
+    <div class="table-item table-th">
+      <div>Buidling</div>
+      <div>Address</div>
+      <div class="center">Gender</div>
+      <div>Symptom</div>
+      <div class="date">Date</div>
+  </div>
     <app-dashboard-table-item *ngFor="let activityLog of activityLogs" [activityLog]="activityLog">
     </app-dashboard-table-item>
   </div>

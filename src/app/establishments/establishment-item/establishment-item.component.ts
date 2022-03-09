@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivityService } from 'src/app/services/activity.service';
-import { EstablishementModel } from 'src/app/_shared/models/establishment.model';
+import { ActivityLogsModel } from 'src/app/_shared/models/activityLogs.model';
 
 @Component({
   selector: 'app-establishment-item',
@@ -14,16 +14,16 @@ export class EstablishmentItemComponent implements OnInit {
   constructor(private activityLogsService: ActivityService) {}
 
   ngOnInit(): void {
+    this.getActivities();
   }
  
-  recordCount = 0;
+  activityLog: ActivityLogsModel[] = [];
+  getActivities(): void {
+    this.activityLogsService.getActivityLogs().subscribe((dataResponse) => {
+      this.activityLog = dataResponse.filter((data) => data.buildingName.toLowerCase() === this.establishment.toLowerCase())
+    });
+  }
   getBuildingRecordCount(): number {
-    // this.activityLogsService.getActivityLogs().subscribe((dataResponse) => {
-    //   this.recordCount = dataResponse.filter((data) => data.buildingName.toLowerCase() === this.establishment.toLowerCase())
-    //     .length;
-    // });
-
-    // return this.recordCount;
-    return 0;
+    return this.activityLog.length;
   }
 }

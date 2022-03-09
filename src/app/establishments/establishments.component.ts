@@ -13,7 +13,10 @@ export class EstablishmentsComponent implements OnInit {
     private activityService: ActivityService
   ) { }
 
+  
   ngOnInit(): void {
-    
+    this.activityService.getActivityLogs().subscribe(response => {
+      console.log(response)
+    });
   }
 }
