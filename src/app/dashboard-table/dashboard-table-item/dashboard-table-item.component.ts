@@ -12,7 +12,7 @@ export class DashboardTableItemComponent implements OnInit {
     address: '',
     status: '',
     gender: '',
-    symptomName: '',
+    age: '',
     activityDate: new Date()
   };
 

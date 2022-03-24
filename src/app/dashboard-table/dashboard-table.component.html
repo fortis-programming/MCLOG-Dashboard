@@ -1,5 +1,21 @@
-<div class="table">
-  <div class="table-head" (click)="expandTodayList()">
+<div class="d-flex flex-column w-100">
+
+  <div class="table-item" style="padding: 8px; font-weight: 600;">
+    <div>Building</div>
+    <div class="location">
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+        </svg>
+        <span>{{ activityLog.address }}</span> -->
+    </div>
+    <!-- <div>{{ activityLog.status }}</div> -->
+    <div class="center">Gender</div>
+    <div>Status</div>
+    <div class="date" style="padding-right: 18px;">Date</div>
+  </div>
+
+  <div class="table1" style="overflow-y: auto;">
+    <!-- <div class="table-head" (click)="expandTodayList()">
     <div class="table-header">
       <p>This month</p>
       <svg [ngClass]="expandTodaysList? 'expand' : 'minimize'" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -9,29 +25,23 @@
       </svg>
     </div>
   </div>
-  <div class="today" *ngIf="expandTodaysList">
-    <div class="table-item table-th">
-      <div>Buidling</div>
-      <div>Address</div>
-      <div class="center">Gender</div>
-      <div>Symptom</div>
-      <div class="date">Date</div>
-  </div>
     <app-dashboard-table-item *ngFor="let activityLog of activityLogs" [activityLog]="activityLog">
     </app-dashboard-table-item>
-  </div>
-  <div class="table-head"  (click)="expandAllData()">
-    <div class="table-header">
+  </div> -->
+
+    <div class="table-head" (click)="expandAllData()">
+      <!-- <div class="table-header">
         <p>All</p>
         <svg [ngClass]="expandAllList? 'expand' : 'minimize'" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd"
             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
             clip-rule="evenodd" />
         </svg>
-      </div>
-  </div>
-  <div class="all" *ngIf="expandAllList">
-    <app-dashboard-table-item *ngFor="let activityLog of activityLogs" [activityLog]="activityLog">
-    </app-dashboard-table-item>
+      </div> -->
+    </div>
+    <div class="all">
+      <app-dashboard-table-item *ngFor="let activityLog of activityLogs" [activityLog]="activityLog">
+      </app-dashboard-table-item>
+    </div>
   </div>
 </div>

@@ -1,5 +1,10 @@
 .header {
     padding: 15px 24px;
+    position: sticky;
+    top: 0%;
+    right: 0%;
+    z-index: 1;
+    background-color: white;
 
     .banner {
         display: flex;

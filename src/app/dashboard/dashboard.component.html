@@ -7,10 +7,10 @@
   <div class="loader"></div>
 </div>
 
-<div class="dashboard">
-  <select class="form-select form-select-lg" aria-label=".form-select-lg example" (change)="onChange($event.target)">
+<div class="dashboard" *ngIf="activityLogs.length !== 0 && !loading">
+  <!-- <select class="form-select form-select-lg" aria-label=".form-select-lg example" style="z-index: 1;" (change)="onChange($event.target)">
     <option value="1" *ngFor="let option of establishments" value="{{ option }}" selected>{{ option }}</option>
-  </select>
+  </select> -->
   <div class="activity-container" *ngIf="activityLogs.length !== 0 && !loading">
     <div class="activity p-2">
       <div class="icon-container icon-container__log">
@@ -39,31 +39,23 @@
     </div>
   </div>
 
-  <div class="card__bordered" *ngIf="activityLogs.length !== 0 && !loading">
-    <div class="table1 d-flex flex-column">
-      <div class="table-head" (click)="expandTodayList()">
-        <div class="table-header">
-          <p>This month</p>
-          <svg [ngClass]="expandTodaysList? 'expand' : 'minimize'" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
-            viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd"
-              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-              clip-rule="evenodd" />
-          </svg>
-        </div>
-      </div>
-      <div class="today" *ngIf="expandTodaysList">
-        <div class="table-item-header">
-          <div>Building</div>
-          <div class="location">Location</div>
-          <div class="center">Gender</div>
-          <div class="">Symptom</div>
-          <div class="date">Date</div>
-        </div>
-        <app-dashboard-table-item *ngFor="let activityLog of activityLogs" [activityLog]="activityLog">
-        </app-dashboard-table-item>
-      </div>
+  <!-- <div class="activity-container">
+    <div class="card card__bordered chart-container">
+      <ngx-charts-pie-chart *ngIf="data.length != 0" [view]="view" [results]="data" [legend]="true" [legendTitle]="'Gender distribution'">
+      </ngx-charts-pie-chart>
+    </div>
+  </div> -->
+
+  <div class="activity-container">
+    <div class="card card__bordered chart-container">
+      <ngx-charts-pie-grid *ngIf="data.length != 0" [view]="view" [results]="data" >
+      </ngx-charts-pie-grid>
     </div>
   </div>
 
+  <div class="activity-container">
+    <div class="card card__bordered chart-container" style="overflow-y: auto; height: max-content;">
+      <app-dashboard-table></app-dashboard-table>
+    </div>
+  </div>
 </div>

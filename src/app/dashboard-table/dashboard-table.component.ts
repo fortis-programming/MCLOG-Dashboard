@@ -17,7 +17,8 @@ export class DashboardTableComponent implements OnInit {
   ngOnInit(): void {
     this.activityService.getActivityLogs().subscribe(response => {
       this.activityLogs = response;
-    })
+      console.log(this.activityLogs.length);
+    });
   }
 
   expandTodaysList = true;
