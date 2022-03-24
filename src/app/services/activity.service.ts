@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ActivityLogsModel } from '../_shared/models/activityLogs.model';
 import { ActivitiesModel } from '../_shared/models/activities.model';
+import { AdminModel } from '../_shared/models/admin.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,15 @@ export class ActivityService {
     return this.http.get<ActivitiesModel[]>(this.apiURL + 'ActivityLogs');
   }
 
-  adminViewService(): Observable<any> {
-    return this.http.get<any>(this.apiURL + 'users/GetAllUsers');
+  adminViewService(): Observable<AdminModel[]> {
+    return this.http.get<AdminModel[]>(this.apiURL + 'users/GetAllUsers');
+  }
+
+  checkHealthService(): Observable<any> {
+    return this.http.get<any>(this.apiURL + 'UserHealthStatus');
+  }
+
+  checkForSymptoms(): Observable<any> {
+    return this.http.get<any>(this.apiURL + 'Symptoms');
   }
 }
