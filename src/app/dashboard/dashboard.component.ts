@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
     this.getActivities();
     this.getTotalPUI();
     this.getAllMale();
+    this.getAllFemale();
     setTimeout(() => {
       this.storeData();
       this.loading = false;
