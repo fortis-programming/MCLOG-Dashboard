@@ -24,4 +24,8 @@ export class ActivityService {
   getActivities(): Observable<ActivitiesModel[]> {
     return this.http.get<ActivitiesModel[]>(this.apiURL + 'ActivityLogs');
   }
+
+  adminViewService(): Observable<any> {
+    return this.http.get<any>(this.apiURL + 'users/GetAllUsers');
+  }
 }

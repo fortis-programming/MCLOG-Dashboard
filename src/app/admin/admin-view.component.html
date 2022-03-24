@@ -1,0 +1,60 @@
+
+
+<select class="form-select form-select-lg symptom-filter" aria-label=".form-select-lg example" [(ngModel)]="filter">
+  <option [value]="'All'">All</option>
+  <option [value]="'Healthy'">Healthy</option>
+  <option [value]="'Unhealthy'">With Symptoms</option>
+</select>
+<select class="form-select form-select-lg building-filter" [(ngModel)]="buildingFilter" *ngIf="!isLoading">
+  <ng-container *ngFor="let building of buildings">
+    <option [value]="building.id">{{ building.buildingName }}</option>
+  </ng-container>
+</select>
+<div class="dashboard mt-4">
+  <div class="table">
+    <div class="today" *ngIf="expandTodaysList">
+      <div class="table-item table-th">
+        <div>Name</div>
+        <div>Address</div>
+        <div>Gender</div>
+        <div>Birthdate</div>
+        <div>Phone Number</div>
+      </div>
+      <ng-container *ngFor="let user of users">
+        <ng-container *ngIf="getBuilding(user.id) == buildingFilter">
+          <ng-container *ngIf="filter == 'All'">
+            <div class="table-item">
+              <div>{{ user.firstName }} {{ user.lastName}}</div>
+              <div>{{ user.baranggay }} {{ user.city }} {{ user.province }}</div>
+              <div>{{ user.gender }} </div>
+              <div>{{ user.birthDate }}</div>
+              <div>{{ user.phoneNumber }}</div>
+              <div><b>Status: </b><span class="healthy" [ngClass]="{'unhealthy' : getHealthStatus(user.id) != 'Healthy'}">{{ getHealthStatus(user.id) }}</span></div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="filter == 'Healthy'">
+            <div class="table-item" *ngIf="getHealthStatus(user.id) == 'Healthy'">
+              <div>{{ user.firstName }} {{ user.lastName}}</div>
+              <div>{{ user.baranggay }} {{ user.city }} {{ user.province }}</div>
+              <div>{{ user.gender }} </div>
+              <div>{{ user.birthDate }}</div>
+              <div>{{ user.phoneNumber }}</div>
+              <div><b>Status: </b><span class="healthy" [ngClass]="{'unhealthy' : getHealthStatus(user.id) != 'Healthy'}">{{ getHealthStatus(user.id) }}</span></div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="filter == 'Unhealthy'">
+            <div class="table-item" *ngIf="getHealthStatus(user.id) != 'Healthy'">
+              <div>{{ user.firstName }} {{ user.lastName}}</div>
+              <div>{{ user.baranggay }} {{ user.city }} {{ user.province }}</div>
+              <div>{{ user.gender }} </div>
+              <div>{{ user.birthDate }}</div>
+              <div>{{ user.phoneNumber }}</div>
+              <div><b>Status: </b><span class="healthy" [ngClass]="{'unhealthy' :  getHealthStatus(user.id) != 'Healthy'}">{{ getHealthStatus(user.id) }}</span></div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+
+</div>

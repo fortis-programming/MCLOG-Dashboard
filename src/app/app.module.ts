@@ -16,6 +16,8 @@ import { getAnalytics } from 'firebase/analytics';
 import { firebaseConfig } from 'src/environments/environment';
 import { DashboardTableComponent } from './dashboard-table/dashboard-table.component';
 import { DashboardTableItemComponent } from './dashboard-table/dashboard-table-item/dashboard-table-item.component';
+import { AdminViewComponent } from './admin/admin-view.component';
+import { FormsModule } from '@angular/forms';
 
 const app = initializeApp(firebaseConfig);
 const analytics =   getAnalytics(app);
@@ -27,14 +29,16 @@ const analytics =   getAnalytics(app);
     EstablishmentsComponent,
     EstablishmentItemComponent,
     DashboardTableComponent,
-    DashboardTableItemComponent
+    DashboardTableItemComponent,
+    AdminViewComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
     AppRoutingModule,
     NgxChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

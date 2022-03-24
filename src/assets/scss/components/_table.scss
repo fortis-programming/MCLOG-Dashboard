@@ -24,6 +24,7 @@
     svg {
       height: 20px;
       margin: auto 5px;
+      color: red;
     }
 
     .expand {
@@ -55,7 +56,7 @@
   display: grid;
   flex-direction: row;
   grid-template-columns: 15% 30% 15% 20% 20%;
-  padding: 8px 20px;
+  padding: 8px 0px;
   border-bottom: 1px solid $border-color;
   font-size: 0.855rem;
 

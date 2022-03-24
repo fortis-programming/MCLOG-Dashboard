@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { routes as DashboardRoute } from '../dashboard/dashboard-routing.module';
 import { MainComponent } from './main.component';
+import { AdminViewComponent } from '../admin/admin-view.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,9 @@ const routes: Routes = [
     children:[
       {
         path: '', redirectTo: 'dashboard', pathMatch: 'full'
+      },
+      {
+        path: 'admin-view', component: AdminViewComponent
       },
       ...DashboardRoute
     ]
