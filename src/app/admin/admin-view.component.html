@@ -26,7 +26,7 @@
         <ng-container *ngIf="getBuilding(user.id) == buildingFilter">
           <ng-container *ngIf="filter == 'All'">
             <div class="table-item">
-              <div>{{ user.firstName }}</div>
+              <div>{{ user.firstName }} {{ user.lastName }}</div>
               <div>{{ user.baranggay }} {{ user.city }} {{ user.province }}</div>
               <div>{{ user.gender }} </div>
               <div>{{ user.birthDate }}</div>
